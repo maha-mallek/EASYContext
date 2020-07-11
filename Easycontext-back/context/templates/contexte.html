@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+
+<html>
+    <head>
+        <title>
+            Python button script
+        </title>
+    </head>
+    <body>
+        
+
+    <form action="/context/lda/" method="post">
+        {% csrf_token %}
+        Input Text:
+        <input type="text" name="text" required><br>
+        <!-- <textarea rows="20" placeholder="Put your text her !-->
+
+        <!-- {{data_external}}<br><br>-->
+        <i class="fas fa-h1    "> FPG</i>
+    <textarea rows="20" placeholder="" style="height: 150px;width:100%"> {{Fpg | safe}}</textarea>
+
+    <i class="fas fa-h1    "> Keywords</i>
+        <textarea rows="20" placeholder="" style="height: 150px;width:100%"> {{Keywords | safe}}</textarea>
+
+
+        <br>
+    <i class="fas fa-h1    "> Result</i>
+        <textarea rows="20" placeholder="" style="height: 150px;width:100%"> {{Result | safe}}</textarea>
+
+        <i class="fas fa-h1    "> Etiquette</i>
+        <textarea rows="20" placeholder="" style="height: 150px;width:100%"> {{Etiquette | safe}}</textarea>
+    
+        <i class="fas fa-h1    "> Keys</i>
+        <textarea rows="20" placeholder="" style="height: 150px;width:100%"> {{Keys | safe}}</textarea>
+            <i class="fas fa-h1    "> Scores</i>
+        <textarea rows="20" placeholder="" style="height: 150px;width:100%"> {{Scores | safe}}</textarea>
+
+        <input type="submit" value="Go">
+
+    </form>
+
+    </body>
+</html>
