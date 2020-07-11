@@ -1,0 +1,49 @@
+<body>
+
+    <form class="form-signin" [formGroup]="loginForm" (ngSubmit)="login()" style="align-content:center;">
+
+        <div class="text-center mb-4" style="margin:auto;">
+            <h1 class="h3 mb-3 font-weight-normal">Signing in</h1>
+            <p> Sign in grants you access to your documents history and downloading your mined results </p>
+        </div>
+
+
+        <div class="form-label-group">
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="usernameHelp" name="username" [(ngModel)]="loginn.username" formControlName="username" required autofocus>
+            <label for="inputUsername">Username</label>
+            <div *ngIf="username.touched && username.invalid">
+                <small *ngIf="username.errors.required" class="form-text text-danger">username Required</small>
+                <small *ngIf="username.errors.minlength" class="form-text text-danger">Invalid username </small>
+            </div>
+        </div>
+
+        <div class="form-label-group">
+            <input type="password" class="form-control" id="exampleInputPassword1" name="password" [(ngModel)]="loginn.password" formControlName="password" required>
+            <label for="inputPassword">Password</label>
+            <div *ngIf="password.touched && password.invalid">
+                <small *ngIf="password.errors.required" class="form-text text-danger">Password Required</small>
+                <small *ngIf="password.errors.minlength" class="form-text text-danger">Invalid Password</small>
+            </div>
+            <small id="emailHelp" class="form-text text-muted">We'll never share your password with anyone
+                else.</small>
+        </div>
+        <br>
+        <!--div class="checkbox mb-3">
+            <label>
+        <input type="checkbox" value="remember-me"> Remember me
+        </label>
+        </div>-->
+
+        <div id="botton">
+            <button class="btn btn-lg btn-block" type="submit" [disabled]="loginForm.invalid">Sign in</button>
+        </div>
+        <div style="text-align: center;">
+            <small id="emailHelp" class="form-text text-muted">You don't have an account ! <a [routerLink]="['/register']">Sign up</a> </small>
+        </div>
+        <div class="btnp" style="color: black;">
+
+            <p>&copy; 2019-2020</p>
+        </div>
+    </form>
+
+</body>

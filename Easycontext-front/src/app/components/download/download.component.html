@@ -1,0 +1,96 @@
+<div class="wrapper d-flex align-items-stretch">
+    <app-sidebar>
+    </app-sidebar>
+
+
+    <div id="wrapper" style="margin-left: -50px;margin-top: -20px;width: 100%;">
+
+        <main id="page-wrapper">
+            <div class="container-fluid">
+                <div class="page-header ">
+                    <div class="heading page-header-item">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb" style="color:brown;">
+                                Your Recent Results Are Here, You Can Download Them Now !
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-ld-10">
+                        <div class="card card-shadow p-3">
+                            <h6 class="h6 card-title" style="color:rgb(46, 1, 1) ;font-size: 15pt;"><b>Your Results</b></h6>
+                            <div class="table" id="htmlData" #htmlData>
+                                <table id="table" class="table table-cart table-primary mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>N°</th>
+                                            <!--class="w-1"-->
+                                            <th>Date</th>
+                                            <th>Original Text</th>
+                                            <th>Context associated</th>
+                                            <th>Keywords associated</th>
+                                            <!--<th></th>-->
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let ress of res;let i = index;">
+                                            <td style="width: 10px;">{{i+1}}</td>
+                                            <td>
+                                                <!--<input type="text" style="width: 85px;" value="{{ress.Date}}" readonly>-->
+                                                <textarea style="width:60px;" readonly>{{ress.Date | date:'shortDate'}}</textarea>
+                                            </td>
+                                            <td style="height:auto; ">
+                                                <textarea style="height: 200px;width: 240px;" readonly>{{ress.Text | slice:0:3000}}</textarea>
+                                                <!--| slice:0:5000-->
+                                            </td>
+                                            <td>
+                                                <textarea style="height: 200px;" readonly>{{contextes[i]['etiquette']}}</textarea>
+                                            </td>
+                                            <td>
+                                                <textarea style="height: 200px;" readonly>{{keyword[i][0]['mots']}} - {{keyword[i][1]['mots']}} - {{keyword[i][2]['mots']}} - {{keyword[i][3]['mots']}} - {{keyword[i][4]['mots']}} - {{keyword[i][5]['mots']}} - {{keyword[i][6]['mots']}} - {{keyword[i][7]['mots']}} - {{keyword[i][8]['mots']}} - {{keyword[i][9]['mots']}} </textarea>
+                                            </td>
+                                            <!-- <td><i class="fa fa-download" style="font-size:24px;float: left;padding-top: 10px;" aria-hidden="true"></i></td>
+                                           -->
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+                            <button type="submit" class="btn btn-success" style="margin: 2px;" (click)="downloadPDF()">
+                                <i class="fa fa-download" aria-hidden="true"></i> Download all Results As PDF
+                            </button>
+                            <!--<a [href]="fileUrl" download="results.txt">DownloadFile</a>-->
+                        </div>
+
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="card card-shadow p-3">
+                            <h6 class="h6 card-title">Results Summary</h6>
+                            <span class="title-small">Total Results</span> <span class="title-big">{{leng}}</span>
+                            <div class="btns mt-1">
+                                <!--<a [routerLink]="['/contextextraction']" class="btn btn-outline-info">
+                                    Continue extracting<br> more Contexts !</a>-->
+
+                            </div>
+                        </div>
+                        <div class="card card-shadow p-3" style="background-color: #4b7bec;color: whitesmoke;">
+                            <h6 class="h6 card-title">For Any Support</h6>
+
+                            <div class="d-flex mb-3">
+                                <i class="fa fa-phone" aria-hidden="true"></i>
+                                <span class="pl-2 font-weight-bold">23232323</span>
+                            </div>
+                            <p>Feel free to call us if you have any problems !</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+    </div>
+
+
+</div>

@@ -1,0 +1,154 @@
+<div class="wrapper d-flex align-items-stretch">
+
+    <app-sidebar></app-sidebar>
+
+    <!-- Page Content  -->
+    <div id="content" class="p-md-5 pt-5" style="float:left;">
+
+        <h2 class="mb-4">Context Extraction</h2>
+        <p>Put your text here or drop your file. EASYContext returns the context and the most valuable keyword in your text.
+        </p>
+
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="nav nav-pills nav-fill mb-3">
+                    <li class="nav-item">
+                        <a id="b1" onclick="myFunction()" class="nav-link" style="cursor:pointer;background-color:cadetblue;color:
+                          cornsilk;">
+                            <i aria-hidden="false" class="fa fa-font"></i> Text
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a id="b2" onclick="myFunctionf()" class="nav-link" style="cursor:pointer;">
+                            <i aria-hidden="true" class="fa
+                              fa-file"></i> File
+                        </a>
+                    </li>
+                </ul>
+
+
+
+                <form [formGroup]="TextForm" (ngSubmit)="Contextextraction()">
+                    <div class="mt-3" id="myDIV" style="display:block;">
+                        <!--<textarea class="form-control2" rows="20" placeholder="Put your text here..." style="height: 150px;"></textarea>-->
+                        <div class="form-group">
+                            <!--<label for="texte">Put your text here...:</label>-->
+                            <textarea type="text" class="form-control2" rows="20" placeholder="Put your text here..." style="height: 250px;font-style: italic;font-family: Arial;color:black;" id="text" name="text" [(ngModel)]="context.text" formControlName="texte" required autofocus></textarea>
+                            <div *ngIf="texte.touched && texte.invalid">
+                                <small *ngIf="texte.errors.required" class="form-text text-danger">Text Required</small>
+                                <small *ngIf="texte.errors.maxlength" class="form-text text-danger">this Text is too long to extract his context</small>
+                            </div>
+                        </div>
+
+                        <div class="d-flex flex-row justify-content-end">
+
+                            <button type="reset" class="btn btn-secondary" style="margin: 2px;">
+                                <i aria-hidden="true" class="fa fa-eraser"></i> Clear </button>
+                            <button type="submit" [disabled]="TextForm.invalid" class="btn btn-success" style="margin: 2px;">
+                  <i aria-hidden="true" class="fa fa-line-chart"></i>Extract Context </button>
+
+                        </div>
+                    </div>
+                </form>
+
+                <div class="mt-3" id="myDIV2" style="display:none;">
+                    <form [formGroup]="fileForm" (ngSubmit)="Contextextraction()">
+
+                        <input type="file" (change)="onChange($event.target.files)" style="margin-bottom: 20px;margin-left:40%;">
+                        <!--formControlName="file"-->
+                        <div class="form-group">
+                            <textarea type="text" class="form-control2" rows="20" placeholder="The content of your file will be writen here..." style="height: 250px;font-style: italic;font-family: Arial;color:black;" id="text" name="text">{{context.text}}</textarea>
+                        </div>
+                        <div *ngIf="file.touched && file.invalid">
+                            <small *ngIf="file.errors.required" class="form-text text-danger">file Required</small>
+                            <small *ngIf="file.errors.maxlength" class="form-text text-danger">this Text file is too long to extract his context</small>
+                        </div>
+
+                        <div class="d-flex flex-row justify-content-end">
+                            <button type="reset" class="btn btn-secondary" style="margin: 2px;">
+                  <i aria-hidden="true" class="fa fa-eraser"></i> Clear </button>
+
+                            <button type="submit" [disabled]="fileForm.invalid" class="btn btn-success" style="margin: 2px;">
+                  <i aria-hidden="true" class="fa fa-line-chart"></i> Extract Context </button>
+
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+        <div *ngIf="load" class="lds-roller" style="display: block;margin-left: auto;margin-right: auto;">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <p>Waiting for results ...</p>
+        </div>
+
+        <div *ngIf="!load&&res" class="row" style="margin-top: 20px;">
+
+            <div class="col-sm-8">
+                <h3 style="text-decoration: underline;color: forestgreen;font-family: Comic Sans MS;">
+                    The Context is: <br>
+
+                </h3>
+                <div id="block">
+                    <!--<input type="text" id="inputnoneditable" readonly>-->
+                    <!--<textarea style="height: 100px;width: 100%;"></textarea>-->
+                    <div class="badge badge-default text-wrap" style="width: 40rem;font-size: 15pt;">{{context.contexte}} </div>
+
+
+                    <!--<div id="outputcontext1">
+
+                        <h4>
+                            INSERT WORDCLOUD HERE!
+                        </h4>
+                    </div>-->
+
+                </div>
+
+
+            </div>
+
+
+            <div class="col-sm-4">
+                <h3 style="text-decoration: underline;font-family: Comic Sans MS;color:navy ">Keywords : </h3>
+                <div class="keywords">
+                    <span class="badge badge-pill badge-primary" style="font-size: 14pt;">{{context.keyword0}}</span>
+                    <span class="badge badge-pill badge-default" style="background-color:red ;font-size: 13.8pt;">{{context.keyword1}}</span>
+                    <span class="badge badge-pill badge-secondary" style="font-size: 13.6pt;">{{context.keyword2}}</span>
+                    <span class="badge badge-pill badge-success" style="font-size: 13.4pt;">{{context.keyword3}}</span>
+                    <span class="badge badge-pill badge-danger" style="font-size: 13.2pt;">{{context.keyword4}}</span>
+                    <span class="badge badge-pill badge-warning" style="font-size: 13.0pt;">{{context.keyword5}}</span>
+                    <span class="badge badge-pill badge-info" style="font-size: 12.8pt;">{{context.keyword6}}</span>
+                    <span class="badge badge-pill badge-light" style="font-size: 12.6pt;background-color: darkgrey;">{{context.keyword7}}</span>
+                    <span class="badge badge-pill badge-dark" style="font-size: 12.4pt;">{{context.keyword8}}</span>
+                    <span class="badge badge-pill badge-dark" style="background-color:chartreuse ;font-size: 12.2pt;">{{context.keyword9}}</span>
+                    <!--<div id='mot' class="badge badge-primary text-wrap" style="width: 10rem;font-size: 12pt;">{{context.keyword0}}</div>
+                    <div id='mot1'>{{context.keyword1}}</div>
+                    <div id='mot2'>{{context.keyword2}}</div>
+                    <div id='mot3'>{{context.keyword3}}</div>
+                    <div id='mot4'>{{context.keyword4}}</div>
+                    <div id='mot5'>{{context.keyword5}}</div>
+                    <div id='mot6'>{{context.keyword6}}</div>
+                    <div id='mot7'>{{context.keyword7}}</div>
+                    <div id='mot8'>{{context.keyword8}}</div>
+                    <div id='mot9'>{{context.keyword9}}</div>-->
+                </div>
+
+                <form (ngSubmit)="New()">
+                    <button class="btn btn-success" style="margin: 20px;float:left;" type="submit"> New Context Extraction !</button>
+                </form>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>

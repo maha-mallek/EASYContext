@@ -1,0 +1,33 @@
+<div class="wrapper d-flex align-items-stretch h-100">
+
+    <nav id="sidebar">
+    <!--
+        <div class="img bg-wrap text-center py-4">
+
+            <div class="user-logo">
+                <img class="img" src="assets/images/LOGO2.png">
+
+                <h3 style="color:#5533FF" >Mining, at a deeper level !</h3>
+            </div>
+        </div> -->
+        <ul class="list-unstyled components mb-5">
+
+            <li class="active">
+                <a [routerLink]="['/']"><span class="fa fa-home mr-3"></span>Home</a>
+            </li>
+            <li class="active">
+                <a [routerLink]="['/contextextraction']"> <span class="fas fa-file-alt"></span> Context Extraction</a>
+            </li>
+
+            <li class="active">
+                <a [routerLink]="['/summarize']"><span class="fas fa-file-alt"></span>  Summarizer</a>
+            </li>
+            <li class="active">
+                <a [routerLink]="['/download']"><span class="fa fa-download mr-3 notif"><small
+          class="d-flex align-items-center justify-content-center">5</small></span>Download recent results</a>
+            </li>
+
+        </ul>
+
+    </nav>
+</div>

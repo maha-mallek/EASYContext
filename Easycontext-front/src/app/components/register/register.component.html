@@ -1,0 +1,78 @@
+<body>
+    <form [formGroup]="registerForm" (ngSubmit)="Register()" class="form-signup">
+        <div class="text-center mb-4" style="margin:auto;">
+            <h1 class="h3 mb-3 font-weight-normal">Sign up</h1>
+            <p> You have to create an account first to access to our text mining services provided ! </p>
+        </div>
+        <div id="edit1">
+            <div class="form-row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control" id="Username" name="username" [(ngModel)]="register.username" formControlName="username">
+                        <div *ngIf="username.touched && username.invalid">
+                            <small *ngIf="username.errors.required" class="form-text text-danger">Username
+                                Required</small>
+                            <small *ngIf="username.errors.pattern" class="form-text text-danger">Invalid
+                                Username</small>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="form-row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="email">Email address</label>
+                        <input type="email" class="form-control" id="email" name="email" formControlName="email" [(ngModel)]="register.email">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                            else.</small>
+                        <div *ngIf="email.touched && email.invalid">
+                            <small *ngIf="email.errors.required" class="form-text text-danger">Email Required</small>
+                            <small *ngIf="email.errors.email" class="form-text text-danger">Invalid Email</small>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" formControlName="password" [(ngModel)]="register.password">
+                        <div *ngIf="password.touched && password.invalid">
+                            <small *ngIf="password.errors.required" class="form-text text-danger">Password
+                                Required</small>
+                            <small *ngIf="password.errors.minlength" class="form-text text-danger">Invalid
+                                Password</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="repassword">Confirm Password</label>
+                        <input type="password" class="form-control" id="repassword" name="repassword" formControlName="repassword">
+                        <div *ngIf="repassword.touched && repassword.invalid">
+                            <small *ngIf="repassword.errors.required" class="form-text text-danger">Confirm Password
+                                Required</small>
+                        </div>
+                        <small *ngIf="repassword.valid && repassword.value != password.value" class="form-text text-danger">Password and confirm password does not match</small>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div id="button">
+                <button type="submit" class="btn btn-lg btn-block" [disabled]="registerForm.invalid || repassword.value != password.value" (onClick)="Register()"> Submit </button>
+            </div>
+            <div class="btnp" style="color: black;text-align: center;">
+
+                <p>&copy; 2019-2020</p>
+            </div>
+        </div>
+    </form>
+
+</body>

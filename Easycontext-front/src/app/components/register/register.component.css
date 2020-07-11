@@ -1,0 +1,38 @@
+body {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-image: url("/assets/images/ai.jpg");
+}
+
+.form-signup {
+  border : 2px;
+  width: 100%;
+  max-width: 420px;
+  margin-top: 200px;
+  padding: 15px;
+  margin: auto;
+  background-color: whitesmoke;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 10px;
+  padding-top: 20px;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: black;
+  color:black;
+}
+
+#button {
+  background-color: #00BFFF;
+  border-radius: 5px;
+  color: black;
+  margin-bottom: 20px;
+}
+
+#btnvalue {
+  font-size: large;
+}

@@ -1,0 +1,90 @@
+<div class="wrapper d-flex align-items-stretch">
+    <app-sidebar>
+    </app-sidebar>
+
+    <div id="wrapper">
+
+        <main id="page-wrapper">
+            <div class="container-fluid">
+                <!-- <div class="page-header d-flex">
+                    <div class="heading page-header-item">
+                        <h4 class="h6">Profile manager</h4>
+                    </div>
+                </div>-->
+                <div class="row">
+                    <div class="col-lg-5">
+                        <div class="card card-shadow card-profile">
+                            <div class="card-img" style="background-image:url(assets/images/user-profile.jpg) ;">
+
+                            </div>
+                            <div class="user-profile"><img src="assets/images/user.jpg" alt="user" />
+                                <span class="title-midd mb-0">{{user.name}}</span> <span style="color: crimson;">Account Management</span></div>
+                            <div class="card-body" style="text-align: center">
+
+                                <div class="col-14"><span class="title-big">Thank you for trusting us !</span> </div>
+
+                            </div>
+                        </div>
+                        <div class="card card-shadow p-3">
+                            <ul>
+                                <li class="mb-3"><span class="title-small"><b>Email address</b></span> <span>{{user.mail}}</span></li>
+                                <li class="mb-3"><span class="title-small"><b>Username</b></span> <span>{{user.name}}</span></li>
+
+                            </ul>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-7">
+                        <h4 style="text-align: center;color: rgb(39, 4, 4);font-size: xx-large;">You Can easly edit your profile here</h4>
+                        <div class="card card-shadow p-3">
+                            <h6 class="h6 card-title"><b>Edit Profile</b></h6>
+                            <form [formGroup]="UserForm" (ngSubmit)="update()" class="row">
+                                <div class="col-12 form-field">
+                                    <label for="name" class="form-label">Full Name</label>
+                                    <input type="text" id="name" class="form-control" id="exampleInputEmail1" aria-describedby="usernameHelp" [(ngModel)]="user_u.username" placeholder="{{user.name}}" name="username" formControlName="username" required autofocus />
+                                    <div class="col-12 form-field">
+                                        <div *ngIf="username.touched && username.invalid">
+                                            <small *ngIf="username.errors.required" class="form-text text-danger">username Required</small>
+                                            <small *ngIf="username.errors.minlength" class="form-text text-danger">Invalid username </small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 form-field">
+                                    <label for="email" class="form-label">Email address</label>
+                                    <input type="email" id="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" [(ngModel)]="user_u.email" placeholder="{{user.mail}}" name="email" formControlName="email" required autofocus/>
+                                    <div class="col-12 form-field">
+                                        <div *ngIf="email.touched && email.invalid">
+                                            <small *ngIf="email.errors.required" class="form-text text-danger">email Required</small>
+                                            <small *ngIf="email.errors.email" class="form-text text-danger">Invalid email </small>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row justify-content-end">
+                                    <div class="col-4">
+                                        <input type="submit" value="Update your private informations" [disabled]="UserForm.invalid" class="btn btn-success" />
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
