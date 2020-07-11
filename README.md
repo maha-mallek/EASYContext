@@ -1,1 +1,1 @@
-#EASYContext
+EASYContext is a Web application implementing unsupervised context extraction. It proposes a new paradigm for context extraction with adding label that accurately describe it. Leveraging this unique semantic platform, “EASYContext” solution is quicker and easier to implement than current approaches.
